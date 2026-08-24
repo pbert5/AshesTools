@@ -1,0 +1,3 @@
+[submodule "packages/AwesomeNixSets"]
+	path = packages/AwesomeNixSets
+	url = https://github.com/pbert5/AwesomeNixSets.git
