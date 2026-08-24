@@ -17,10 +17,9 @@
         meta.description = info.description;
       };
       bundles = builtins.mapAttrs bundle meta;
-      inventory = pkgs.writeText "ashes-tools-sets.txt" (builtins.concatStringsSep "\n" (builtins.concatLists (builtins.attrValues (builtins.mapAttrs (name: info: [
-        "${name}\t${info.category}\t${info.description}"
-        (builtins.concatStringsSep " " info.availablePackageNames)
-      ]) meta))));
+      inventory = pkgs.writeText "ashes-tools-sets.txt" (builtins.concatStringsSep "\n" (builtins.attrValues (builtins.mapAttrs (name: info:
+        "${name}\t${info.category}\t${info.description}\t${builtins.concatStringsSep " " info.availablePackageNames}"
+      ) meta)));
       listSets = pkgs.writeShellApplication {
         name = "ashes-tools-list-sets";
         runtimeInputs = [ pkgs.gawk ];
